@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  build:
+    image: tinygo/tinygo-dev
+    working_dir: /src
+    volumes:
+      - .:/src
+    command: ["make"]
+
+  envoy:
+    image: envoyproxy/envoy-dev
+    volumes:
+      - .:/etc/envoy
+    ports:
+      - 8000:8000
+      - 8001:8001
